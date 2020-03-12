@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,900|Playfair+Display:400,400i&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://use.fontawesome.com/62900b2ea0.js"></script>
+    <title>Landing</title>
+  </head>
+  <body>
+    <header class="header ">
+      <div class="container header-container">
+        <div class="nav">
+          <div class="logo">
+            <img src="./img/logo.png" alt="" />
+          </div>
+          <nav class="menu desktop">
+            <ul>
+              <li><a class="active" href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="menu-icon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <nav class="menu mobile">
+              <ul>
+                <li><a class="active" href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="brand">
+          <h1>Long Beach Surfing Institute</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="intro" id="about">
+        <div class="container main-container">
+          <div class="reviews">
+            <div class="block-title"><span>Recent Reviews</span></div>
+            <div class="review">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+              incididunt ut labore et dolore magn.
+              <p>- Stewe Woz</p>
+            </div>
+            <div class="review">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+              incididunt ut labore et dolore magn.
+              <p>- David Collum</p>
+            </div>
+          </div>
+          <div class="big-video">
+            <video
+              class="big-video-player"
+              id="asds"
+              height="400"
+              poster="./img/video.mp4"
+              controls
+            >
+              <source
+                src="./img/video.mp4"
+                type='video/ogg; codecs="theora, vorbis"'
+              />
+              <source
+                src="./img/video.mp4"
+                type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+              />
+              <source
+                src="./img/video.mp4"
+                type='video/webm; codecs="vp8, vorbis"'
+              />
+            </video>
+            <button class="play-video" data-play="true">
+              <i class="fa fa-play"></i>
+            </button>
+          </div>
+          <div class="small-video">
+            <div class="block-title">
+              <span>User Videos</span>
+            </div>
+            <div class="block-video">
+              <div class="video">
+                <video height="155" poster="./img/img-2.jpg">
+                  <!-- <source
+                    src="./img/video.mp4"
+                    type='video/ogg; codecs="theora, vorbis"'
+                  />
+                  <source
+                    src="./img/video.mp4"
+                    type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+                  />
+                  <source
+                    src="./img/video.mp4"
+                    type='video/webm; codecs="vp8, vorbis"'
+                  /> -->
+                </video>
+                <button class="play-video">
+                  <i class="fa fa-play"></i>
+                </button>
+              </div>
+
+              <div class="video">
+                <video height="155" poster="./img/img-3.jpg">
+                  <!-- <source
+                    src="./img/video.mp4"
+                    type='video/ogg; codecs="theora, vorbis"'
+                  />
+                  <source
+                    src="./img/video.mp4"
+                    type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+                  />
+                  <source
+                    src="./img/video.mp4"
+                    type='video/webm; codecs="vp8, vorbis"'
+                  /> -->
+                </video>
+                <button class="play-video">
+                  <i class="fa fa-play"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-insructors">
+        <div class="container intsructors-container">
+          <div class="instructors">
+            <div class="block-title">
+              Popular Instractors <a name="about"></a>
+            </div>
+
+            <div class="row">
+              <div class="incructor-card">
+                <div class="photo">
+                  <img src="./img/img-4.jpg" alt="" />
+                </div>
+                <span class="incstuctor-name">Simon Adward</span>
+                <p class="count-students">5,000 students</p>
+              </div>
+              <div class="incructor-card">
+                <div class="photo">
+                  <img src="./img/img-5.jpg" alt="" />
+                </div>
+                <span class="incstuctor-name ">Elliana D’Soza</span>
+                <p class="count-students">4,350 students</p>
+              </div>
+              <div class="incructor-card">
+                <div class="photo">
+                  <img src="./img/img-6.jpg" alt="" />
+                </div>
+                <span class="incstuctor-name ">Joseph Bardon</span>
+                <p class="count-students">3,248 students</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-blog" id="blog">
+        <div class="container container-blog">
+          <div class="blog">
+            <a name="blog"></a>
+            <div class="block-title">
+              Recent Blogs by User
+            </div>
+
+            <article class="right-direction">
+              <div class="article-photo">
+                <img src="./img/img-7.jpg" alt="" />
+              </div>
+              <div class="article-content">
+                <div class="article-title">
+                  Lipsum cound be headline
+                </div>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam.
+                </p>
+
+                <button class="read-more">Read More</button>
+              </div>
+            </article>
+
+            <article class="left-direction">
+              <div class="article-photo">
+                <img src="./img/img-8.jpg" alt="" />
+              </div>
+              <div class="article-content">
+                <div class="article-title">
+                  Lipsum cound be headline
+                </div>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam.
+                </p>
+
+                <button class="read-more">Read More</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-cta" id="contact">
+        <div class="container cta-container">
+          <div class="cta">
+            <div class="block-title">
+              Aren’t you intrested Yet!!
+            </div>
+
+            <button class="button-enrol">
+              Enroll Now
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-content">
+          <div class="copyright-block">
+            <span class="copyright-name">Beach Surfing</span><br />
+            <span class="copyright">Copyright © 2018 All Rights Reserved.</span>
+          </div>
+
+          <div class="designed">
+            <p>
+              <a name="contact"></a>
+              Designed by
+              <span>Rikon Rahman</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,984 @@
+@mixin for-xs {
+  @media screen and (max-width: 576px) {
+    @content;
+  }
+}
+@mixin for-sm {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+@mixin for-md {
+  @media screen and (max-width: 991px) {
+    @content;
+  }
+}
+@mixin for-lg {
+  @media screen and (max-width: 1199px) {
+    @content;
+  }
+}
+@mixin for-xl {
+  @media screen and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin for-xxl {
+  @media screen and (min-width: 1441px) {
+    @content;
+  }
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: #aaaaaa;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include for-xl() {
+    max-width: 1140px;
+  }
+
+  @include for-lg() {
+    max-width: 960px;
+  }
+
+  @include for-md() {
+    max-width: 720px;
+  }
+
+  @include for-sm() {
+    max-width: 540px;
+  }
+
+  @include for-xs() {
+    width: 90%;
+  }
+}
+
+header.header {
+  .container.header-container {
+    .nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0;
+      margin-left: auto;
+      margin-right: auto;
+
+      // padding-top: 90px;
+
+      // @include for-xl() {
+      //   // padding-top: 70px;
+      // }
+
+      // @include for-lg() {
+      //   padding-top: 50px;
+      // }
+
+      // @include for-md() {
+      //   padding-top: 40px;
+      // }
+      // top: 0;
+
+      .logo {
+        line-height: 0;
+      }
+
+      .menu {
+        @include for-md() {
+          display: none;
+        }
+
+        ul {
+          display: flex;
+          flex-direction: row;
+          list-style: none;
+          padding-left: 0;
+
+          li {
+            text-transform: uppercase;
+            margin-right: 70px;
+            line-height: 0;
+
+            a {
+              text-decoration: none;
+              color: inherit;
+            }
+
+            a.active {
+              color: red;
+            }
+          }
+
+          li:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .menu.mobile {
+        display: none;
+        opacity: 0;
+        padding: 0 25px;
+        background-color: #f1f1f1;
+        position: absolute;
+        top: 35px;
+        right: -40px;
+        transition: all 0.2s ease-in;
+        // user-select: none;
+        z-index: -1;
+
+        ul {
+          flex-direction: column;
+          margin: 0;
+          user-select: none;
+
+          li {
+            user-select: none;
+            margin: 15px auto;
+          }
+        }
+      }
+
+      .menu.mobile.menu-active {
+        display: block;
+        opacity: 1;
+        z-index: 1;
+      }
+
+      .menu-icon {
+        display: none;
+        cursor: pointer;
+        position: relative;
+
+        @include for-md() {
+          display: block;
+        }
+
+        .line {
+          height: 1px;
+          width: 30px;
+          background-color: #60606e;
+          transition: all 0.2s ease-in;
+        }
+
+        .line:nth-child(2) {
+          margin: 7px 0;
+          width: 15px;
+        }
+
+        .line:nth-child(3) {
+          width: 20px;
+        }
+      }
+
+      .menu-icon.active-menu-icon {
+        .line {
+          width: 30px;
+        }
+      }
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      z-index: 9999;
+      animation-name: show_menu;
+      animation-duration: 0.2s;
+      background-color: #e6e6e6;
+      opacity: 0.7;
+      color: #000;
+      font-weight: bold;
+    }
+
+    @keyframes show_menu {
+      0% {
+        opacity: 0;
+        top: -100px;
+      }
+
+      100% {
+        opacity: 1;
+        top: 0;
+      }
+    }
+
+    .brand {
+      text-align: center;
+      padding-top: 230px;
+      padding-bottom: 210px;
+
+      @include for-xl() {
+        padding-top: 180px;
+        padding-bottom: 160px;
+      }
+
+      @include for-lg() {
+        padding-top: 180px;
+        padding-bottom: 160px;
+      }
+
+      @include for-md() {
+        padding-top: 130px;
+        padding-bottom: 130px;
+      }
+
+      @include for-xs() {
+        padding-top: 100px;
+        padding-bottom: 130px;
+      }
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 70px;
+        line-height: 100px;
+        color: #000;
+        font-weight: 400;
+
+        @include for-md() {
+          font-size: 50px;
+          line-height: 80px;
+        }
+
+        @include for-xs() {
+          font-size: 42px;
+          line-height: 60px;
+        }
+      }
+
+      p {
+        width: 40%;
+        margin: 0 auto;
+
+        @include for-xl() {
+          width: 60%;
+        }
+
+        @include for-md() {
+          width: 70%;
+        }
+
+        @include for-sm() {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+main.main {
+  .block-title {
+    font-family: "Playfair Display";
+    font-size: 36px;
+    color: #000;
+    padding-top: 25px;
+
+    @include for-xl() {
+      padding-top: 15px;
+      line-height: 1.1;
+    }
+
+    @include for-lg() {
+      padding-top: 10px;
+    }
+
+    @include for-md() {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    @include for-sm() {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  }
+
+  section.intro {
+    margin-bottom: 230px;
+
+    @include for-xl() {
+      margin-bottom: 200px;
+    }
+
+    @include for-lg() {
+      margin-bottom: 180px;
+    }
+
+    @include for-md() {
+      margin-bottom: 140px;
+    }
+
+    button.play-video {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: white;
+      outline: none;
+      border: none;
+      position: absolute;
+      transition: all 0.3s ease-in;
+
+      @include for-md() {
+        left: 110px;
+        bottom: 30px;
+      }
+    }
+
+    button.play-video:active {
+      border: 3px solid gray;
+
+      i {
+        color: red;
+      }
+    }
+
+    .container.main-container {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-between;
+
+      @include for-md() {
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .reviews {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 20%;
+        margin-right: 20px;
+
+        @include for-md() {
+          margin-right: 0;
+          margin-bottom: 50px;
+        }
+
+        .review {
+          margin-top: 60px;
+          text-align: left;
+          line-height: 30px;
+          font-style: italic;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #e7e7e7;
+          position: relative;
+          z-index: 1;
+
+          @include for-xl() {
+            margin-top: 15px;
+            padding-bottom: 10px;
+          }
+
+          @include for-lg() {
+            margin-top: 20px;
+            padding-bottom: 15px;
+          }
+
+          @include for-md() {
+            text-align: center;
+          }
+
+          p {
+            color: #000;
+            font-weight: bold;
+            font-style: normal;
+            margin-bottom: 0;
+
+            @include for-lg() {
+              margin: 0;
+            }
+          }
+        }
+
+        .review:before {
+          content: "“";
+          font-family: "Playfair Display";
+          color: #e7e7e7;
+          font-size: 100px;
+          position: absolute;
+          top: 28px;
+          z-index: -1;
+          left: -20px;
+        }
+      }
+
+      .big-video {
+        flex: 1 1 50%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        transition: all 0.2s ease-in;
+
+        video {
+          width: 100%;
+        }
+
+        @include for-md() {
+          margin-bottom: 50px;
+        }
+
+        button.play-video {
+          bottom: 70px;
+          left: 70px;
+          @include for-md() {
+            left: 120px;
+          }
+        }
+      }
+
+      .small-video {
+        flex: 0 1 20%;
+        margin-left: 20px;
+
+        @include for-md() {
+          margin-left: 0;
+        }
+
+        .block-video {
+          @include for-md() {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+
+          @include for-sm() {
+            justify-content: space-around;
+          }
+
+          @include for-xs() {
+            flex-direction: column;
+          }
+
+          .video {
+            position: relative;
+
+            @include for-sm() {
+              text-align: center;
+            }
+
+            .play-video {
+              left: 15px;
+              bottom: 35px;
+              width: 40px;
+              height: 40px;
+
+              @include for-sm() {
+                left: 35px;
+              }
+
+              @include for-xs() {
+                left: 120px;
+                bottom: 45px;
+              }
+            }
+            video {
+              padding-top: 35px;
+              width: 100%;
+
+              @include for-lg() {
+                padding-top: 0;
+              }
+
+              @include for-sm() {
+                width: 80%;
+              }
+
+              @include for-xs() {
+                width: 100%;
+                margin-bottom: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  section.section-insructors {
+    margin-bottom: 230px;
+
+    @include for-xl() {
+      margin-bottom: 200px;
+    }
+
+    @include for-lg() {
+      margin-bottom: 180px;
+    }
+
+    .container.intsructors-container {
+      .instructors {
+        padding: 0 190px;
+
+        @include for-xl() {
+          padding: 0 120px;
+        }
+
+        @include for-lg() {
+          padding: 0 90px;
+        }
+
+        @include for-md() {
+          padding: 0 60px;
+        }
+
+        @include for-sm() {
+          padding: 0;
+        }
+
+        .block-title {
+          text-align: center;
+          font-size: 50px;
+          font-weight: 400;
+          letter-spacing: 0.41px;
+          padding-top: 0;
+          margin-bottom: 90px;
+
+          @include for-xl() {
+            margin-bottom: 70px;
+          }
+        }
+
+        .row {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          @include for-sm() {
+            flex-direction: column;
+            padding: 0;
+          }
+
+          .incructor-card {
+            text-align: center;
+            flex: 1 1 33%;
+            margin-right: 90px;
+
+            @include for-md() {
+              margin-right: 40px;
+            }
+
+            @include for-sm() {
+              margin-right: 0px;
+              display: flex;
+              flex-direction: column;
+              margin-bottom: 40px;
+            }
+
+            .photo {
+              max-width: 290px;
+              max-height: 350px;
+              margin-bottom: 40px;
+
+              @include for-xl() {
+                margin-bottom: 20px;
+              }
+
+              @include for-lg() {
+                margin-bottom: 20px;
+              }
+
+              @include for-sm() {
+                margin-bottom: 20px;
+                max-width: 100%;
+                max-height: 100%;
+              }
+            }
+
+            span.incstuctor-name {
+              display: inline-block;
+              color: #000000;
+              font-family: "Playfair Display";
+              font-size: 30px;
+              font-weight: 400;
+              letter-spacing: 0.28px;
+              margin-bottom: 20px;
+
+              @include for-xl() {
+                margin-bottom: 10px;
+              }
+
+              @include for-lg() {
+                margin-bottom: 10px;
+              }
+            }
+
+            p.count-students {
+              display: inline-block;
+              color: #4dc359;
+              margin: 0;
+            }
+          }
+
+          .incructor-card:last-child {
+            margin-right: 0;
+
+            @include for-xs() {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  section.section-blog {
+    margin-bottom: 230px;
+
+    @include for-xl() {
+      margin-bottom: 180px;
+    }
+
+    @include for-lg() {
+      margin-bottom: 180px;
+    }
+
+    .container.container-blog {
+      .blog {
+        padding: 0 190px;
+
+        @include for-xl() {
+          padding: 0 120px;
+        }
+
+        @include for-lg() {
+          padding: 0 90px;
+        }
+
+        @include for-md() {
+          padding: 0 60px;
+        }
+
+        @include for-sm() {
+          padding: 0;
+        }
+
+        .block-title {
+          text-align: center;
+          font-size: 50px;
+          letter-spacing: 0.41px;
+          padding-top: 0;
+          margin-bottom: 90px;
+
+          @include for-xl() {
+            margin-bottom: 70px;
+          }
+        }
+
+        article {
+          margin-bottom: 190px;
+          display: flex;
+          flex-direction: row;
+
+          @include for-xl() {
+            margin-bottom: 140px;
+          }
+
+          @include for-lg() {
+            margin-bottom: 100px;
+          }
+
+          @include for-md() {
+            flex-direction: column;
+            margin-bottom: 100px;
+          }
+
+          div {
+            flex: 1 1 50%;
+          }
+
+          .article-photo {
+            @include for-md() {
+              margin-bottom: 20px;
+            }
+          }
+
+          .article-content {
+            padding-top: 50px;
+
+            @include for-xl() {
+              padding-top: 20px;
+            }
+
+            @include for-md() {
+              padding-top: 0px;
+            }
+
+            .article-title {
+              color: #000000;
+              font-family: "Playfair Display";
+              font-size: 40px;
+              font-style: italic;
+              letter-spacing: 1.8px;
+              margin-bottom: 30px;
+
+              @include for-xl() {
+                // font-size: 34px;
+                line-height: 1.2;
+                margin-bottom: 20px;
+              }
+
+              @include for-lg() {
+                // font-size: 34px;
+                line-height: 1.2;
+                margin-bottom: 20px;
+              }
+
+              @include for-lg() {
+                // font-size: 34px;
+                line-height: 1.2;
+                margin-bottom: 20px;
+              }
+
+              @include for-md() {
+                text-align: center;
+              }
+            }
+
+            p {
+              color: #444444;
+              font-family: "Avenir - Roman";
+              font-size: 16px;
+              line-height: 31px;
+              letter-spacing: 0.06px;
+              margin: 0;
+              margin-bottom: 60px;
+
+              @include for-xl() {
+                margin-bottom: 20px;
+              }
+
+              @include for-lg() {
+                margin-bottom: 20px;
+              }
+            }
+
+            button.read-more {
+              padding: 20px 20px;
+              background-color: white;
+              border: 1px solid #e5e5e5;
+              color: #000000;
+              font-size: 20px;
+              font-weight: bold;
+
+              @include for-xl() {
+                padding: 10px 10px;
+                font-size: 16px;
+              }
+
+              @include for-lg() {
+                padding: 10px 10px;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+
+        article.right-direction {
+          .article-content {
+            padding-left: 75px;
+
+            @include for-xl() {
+              padding-left: 60px;
+            }
+
+            @include for-lg() {
+              padding-left: 60px;
+            }
+
+            @include for-md() {
+              padding-left: 0px;
+            }
+
+            p {
+              padding-right: 45px;
+
+              @include for-xl() {
+                padding-right: 20px;
+              }
+
+              @include for-lg() {
+                padding-right: 20px;
+              }
+
+              @include for-md() {
+                padding-right: 0px;
+              }
+            }
+          }
+        }
+
+        article.left-direction {
+          flex-direction: row-reverse;
+
+          @include for-md() {
+            flex-direction: column;
+          }
+
+          .article-content {
+            padding-right: 75px;
+
+            @include for-xl() {
+              padding-right: 40px;
+            }
+
+            @include for-lg() {
+              padding-right: 40px;
+            }
+
+            @include for-md() {
+              padding-right: 0px;
+            }
+
+            p {
+              padding-right: 20px;
+
+              @include for-md() {
+                padding-right: 0px;
+              }
+            }
+          }
+        }
+
+        article:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  section.section-cta {
+    margin-bottom: 190px;
+
+    @include for-xl() {
+      margin-bottom: 160px;
+    }
+
+    @include for-lg() {
+      margin-bottom: 160px;
+    }
+
+    .container.cta-container {
+      .cta {
+        padding: 0 190px;
+        text-align: center;
+
+        @include for-md() {
+          padding: 0 60px;
+        }
+
+        @include for-sm() {
+          padding: 0;
+        }
+
+        .block-title {
+          font-size: 50px;
+          font-weight: 400;
+          letter-spacing: 0.41px;
+          margin-bottom: 80px;
+
+          @include for-xs() {
+            font-size: 42px;
+            line-height: 60px;
+            margin-bottom: 50px;
+          }
+        }
+
+        .button-enrol {
+          padding: 20px 45px;
+          border: 1px solid #41475b;
+          background-color: white;
+          color: #000000;
+          font-family: Avenir;
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+footer.footer {
+  padding-bottom: 40px;
+
+  @include for-xs() {
+    padding-bottom: 20px;
+  }
+  .container.footer-container {
+    .footer-content {
+      padding-left: 135px;
+      padding-right: 160px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      @include for-md() {
+        padding-left: 90px;
+        padding-right: 90px;
+      }
+
+      @include for-sm() {
+        padding: 0;
+      }
+
+      .copyright-block {
+        @include for-xs() {
+          line-height: 20px;
+        }
+
+        span.copyright-name {
+          color: #000000;
+          font-family: "Playfair Display";
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 19.09px;
+        }
+
+        span.copyright {
+          color: #9f9f9f;
+          font-family: "Avenir - Roman";
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 28px;
+
+          @include for-xs() {
+            line-height: 20px;
+          }
+        }
+      }
+
+      .designed {
+        p {
+          margin: 0;
+          color: #9f9f9f;
+          font-family: "Avenir - Roman";
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 36px;
+
+          @include for-xs() {
+            line-height: 20px;
+            text-align: end;
+          }
+          span {
+            color: #000000;
+            font-family: Avenir;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}

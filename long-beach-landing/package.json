@@ -1,0 +1,25 @@
+{
+  "name": "long-beach-landing",
+  "version": "1.0.0",
+  "description": "Landing page for WSS",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blueberryNTMY/landing-page.git"
+  },
+  "author": "vlad.olishynskyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blueberryNTMY/landing-page/issues"
+  },
+  "homepage": "https://github.com/blueberryNTMY/landing-page#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {}
+}
