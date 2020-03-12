@@ -23,30 +23,41 @@ function setLS(task) {
   }
 }
 
-const getTasks = getLS();
-
 (function todo(taskList) {
   btnAdd.addEventListener("click", addTask);
   unfinishedList.addEventListener("click", deleteTask);
   unfinishedList.addEventListener("click", completeTask);
+  finishedList.addEventListener("click", deleteTask);
+  finishedList.addEventListener("click", completeTask);
 
   renderAllTasks(taskList);
 
   function renderAllTasks(tasks = {}) {
-    const fragment = document.createDocumentFragment();
+    const finishedFragment = document.createDocumentFragment();
+    const unfinishedFragment = document.createDocumentFragment();
+
+    unfinishedList.innerHTML = "";
+    finishedList.innerHTML = "";
 
     if (tasks.length > 0) {
       tasks.reverse().forEach(task => {
         const li = createDOMListItem(task);
-        fragment.appendChild(li);
+
+        if (task.isFinished) {
+          finishedFragment.appendChild(li);
+        } else {
+          unfinishedFragment.appendChild(li);
+        }
       });
     } else {
       const div = document.createElement("div");
       div.innerHTML = "List is empty";
-      fragment.appendChild(div);
+      finishedFragment.appendChild(div);
+      unfinishedFragment.appendChild(div);
     }
 
-    unfinishedList.appendChild(fragment);
+    unfinishedList.appendChild(unfinishedFragment);
+    finishedList.appendChild(finishedFragment);
   }
 
   function createDOMListItem({ _id, priority, title, body }) {
@@ -96,9 +107,9 @@ const getTasks = getLS();
 
   function addTask(e) {
     e.preventDefault();
-    let title = inputTitle.value;
-    let body = inputBody.value;
-    let priority = inputPriority.value;
+    const title = inputTitle.value;
+    const body = inputBody.value;
+    const priority = inputPriority.value;
 
     if (!title) {
       alert("Enter field Title");
@@ -106,17 +117,14 @@ const getTasks = getLS();
     }
 
     const task = createNewTask(title, body, priority);
-    const li = createDOMListItem(task);
 
     setLS(task);
 
     inputTitle.value = "";
     inputBody.value = "";
     inputPriority.value = "";
-    const getTasks = getLS();
 
-    unfinishedList.innerHTML = "";
-    renderAllTasks(getTasks);
+    renderAllTasks(getLS());
   }
 
   function deleteTask({ target }) {
@@ -134,6 +142,7 @@ const getTasks = getLS();
       });
 
       parent.remove();
+      renderAllTasks(getLS());
     }
   }
 
@@ -141,7 +150,19 @@ const getTasks = getLS();
     if (target.classList.contains("list__checkbox")) {
       const parent = target.closest("[data-task-id]");
 
-      parent.classList.toggle("complete");
+      const getTasks = getLS();
+      const id = parent.dataset.taskId;
+
+      const completeTask = getTasks.map(item => {
+        if (item._id == id) item.isFinished = !item.isFinished;
+        return item;
+      });
+      localStorage.clear();
+
+      completeTask.forEach(element => {
+        setLS(element);
+      });
+      renderAllTasks(getLS());
     }
   }
-})(getTasks);
+})(getLS());
