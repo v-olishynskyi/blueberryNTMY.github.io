@@ -7,7 +7,7 @@ const sectionBlog = document.querySelector(
 const header = document.querySelector("body > header");
 const sectionCta = document.querySelector("body > main > section.section-cta");
 const menuMobile = document.querySelector(
-  "body > header > div > div.nav > div.menu-icon > nav"
+  "body > header > div > div.nav > nav.menu.mobile"
 );
 
 var isMobile = {
@@ -146,6 +146,8 @@ window.addEventListener("resize", e => {
     document.querySelector("body > header > div").offsetLeft + "px";
 });
 
+const main = document.querySelector("body > main");
+
 window.onscroll = e => {
   if (
     window.pageYOffset >
@@ -153,11 +155,13 @@ window.onscroll = e => {
   ) {
     if (window.getComputedStyle(menuDesktop).display !== "none") {
       nav.classList.add("fixed");
+      // main.classList.add("main-scroll");
     } else {
       nav.classList.add("fixed");
     }
   } else {
     nav.classList.remove("fixed");
+    // main.classList.remove("main-scroll");
   }
 
   ankers.map(anker => {

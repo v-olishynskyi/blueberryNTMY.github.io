@@ -5,6 +5,8 @@ const inputBody = document.querySelector(".input__field-body");
 const inputPriority = document.querySelector(".input__field-priority");
 const btnAdd = document.querySelector(".input__btn-add");
 
+const sortButton = document.querySelectorAll("button.sorted-button");
+
 function getLS() {
   const ls = JSON.parse(localStorage.getItem("tasks"));
 
@@ -30,6 +32,13 @@ function setLS(task) {
   finishedList.addEventListener("click", deleteTask);
   finishedList.addEventListener("click", completeTask);
 
+  sortButton.forEach(elem => {
+    elem.addEventListener("click", ({ target }) => {
+      const params = target.dataset.sort;
+      console.log(typeof params);
+      sortBy(params);
+    });
+  });
   renderAllTasks(taskList);
 
   function renderAllTasks(tasks = {}) {
@@ -41,11 +50,12 @@ function setLS(task) {
 
     if (tasks.length > 0) {
       tasks.reverse().forEach(task => {
-        const li = createDOMListItem(task);
-
         if (task.isFinished) {
+          const li = createDOMListItem(task, (check = true));
           finishedFragment.appendChild(li);
+          li.classList.add("complete");
         } else {
+          const li = createDOMListItem(task);
           unfinishedFragment.appendChild(li);
         }
       });
@@ -60,13 +70,14 @@ function setLS(task) {
     finishedList.appendChild(finishedFragment);
   }
 
-  function createDOMListItem({ _id, priority, title, body }) {
+  function createDOMListItem({ _id, priority, title, body }, check = false) {
     const li = document.createElement("li");
     li.classList.add("list__item");
     li.setAttribute("data-task-id", _id);
 
     const input = document.createElement("input");
     input.type = "checkbox";
+    input.checked = check;
     input.classList.add("list__checkbox");
 
     const span = document.createElement("span");
@@ -149,7 +160,6 @@ function setLS(task) {
   function completeTask({ target }) {
     if (target.classList.contains("list__checkbox")) {
       const parent = target.closest("[data-task-id]");
-
       const getTasks = getLS();
       const id = parent.dataset.taskId;
 
@@ -162,7 +172,18 @@ function setLS(task) {
       completeTask.forEach(element => {
         setLS(element);
       });
+      // debugger;
+
       renderAllTasks(getLS());
+      target.checked = !target.checked;
     }
+  }
+
+  function sortBy(sortParams) {
+    const getTasks = getLS();
+    let arr = [];
+    if (sortParams !== "priority") arr = getTasks.sort().reverse();
+    else arr = getTasks.sort((a, b) => a[sortParams] - b[sortParams]);
+    renderAllTasks(arr);
   }
 })(getLS());
