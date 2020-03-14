@@ -61,9 +61,9 @@ header.header .container.header-container .nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 30px 0;
   margin-left: auto;
   margin-right: auto;
-  height: 90px;
 }
 
 header.header .container.header-container .nav .logo {
@@ -108,15 +108,13 @@ header.header .container.header-container .nav .menu ul li:last-child {
 }
 
 header.header .container.header-container .nav .menu.mobile {
-  display: none;
+  display: block;
   opacity: 0;
   left: 121px;
-  background-color: #f1f1f1;
   position: absolute;
-  top: 35px;
   right: 121px;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
   z-index: -1;
 }
 
@@ -130,6 +128,7 @@ header.header .container.header-container .nav .menu.mobile ul {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  padding-top: 5px;
 }
 
 header.header .container.header-container .nav .menu.mobile ul li {
@@ -137,12 +136,12 @@ header.header .container.header-container .nav .menu.mobile ul li {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  margin: 15px auto;
+  margin: 13px auto;
 }
 
 header.header .container.header-container .nav .menu.mobile.menu-active {
-  display: block;
-  opacity: 0.5;
+  opacity: 1;
+  z-index: 1;
 }
 
 header.header .container.header-container .nav .menu-icon {
@@ -181,16 +180,28 @@ header.header .container.header-container .nav .menu-icon.active-menu-icon .line
 header.header .container.header-container .fixed {
   position: fixed;
   top: 0;
+  padding-left: 15px;
+  padding-right: 15px;
   z-index: 9999;
   -webkit-animation-name: show_menu;
           animation-name: show_menu;
   -webkit-animation-duration: 0.2s;
           animation-duration: 0.2s;
   background-color: #e6e6e6;
-  opacity: 0.7;
+  opacity: 0.9;
   color: #000;
   font-weight: bold;
-  height: 90px;
+  height: 55px;
+}
+
+@media screen and (max-width: 576px) {
+  header.header .container.header-container .fixed {
+    height: 45px;
+  }
+}
+
+header.header .container.header-container .fixed .menu.mobile ul {
+  padding-top: 0;
 }
 
 @-webkit-keyframes show_menu {

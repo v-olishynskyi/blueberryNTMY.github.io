@@ -132,18 +132,28 @@ const menuDesktop = document.querySelector(
   "body > header > div > div.nav > nav"
 );
 
-window.addEventListener("load", e => {
-  nav.style.left =
-    document.querySelector("body > header > div").offsetLeft + "px";
-  nav.style.right =
-    document.querySelector("body > header > div").offsetLeft + "px";
+window.addEventListener("load", () => {
+  if (window.innerWidth > 991) {
+    nav.style.left =
+      document.querySelector("body > header > div").offsetLeft + "px";
+    nav.style.right =
+      document.querySelector("body > header > div").offsetLeft + "px";
+  } else {
+    nav.style.left = 0;
+    nav.style.right = 0;
+  }
 });
 
-window.addEventListener("resize", e => {
-  nav.style.left =
-    document.querySelector("body > header > div").offsetLeft + "px";
-  nav.style.right =
-    document.querySelector("body > header > div").offsetLeft + "px";
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 991) {
+    nav.style.left =
+      document.querySelector("body > header > div").offsetLeft + "px";
+    nav.style.right =
+      document.querySelector("body > header > div").offsetLeft + "px";
+  } else {
+    nav.style.left = 0;
+    nav.style.right = 0;
+  }
 });
 
 const main = document.querySelector("body > main");
@@ -155,13 +165,11 @@ window.onscroll = e => {
   ) {
     if (window.getComputedStyle(menuDesktop).display !== "none") {
       nav.classList.add("fixed");
-      // main.classList.add("main-scroll");
     } else {
       nav.classList.add("fixed");
     }
   } else {
     nav.classList.remove("fixed");
-    // main.classList.remove("main-scroll");
   }
 
   ankers.map(anker => {
