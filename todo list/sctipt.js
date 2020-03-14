@@ -110,7 +110,8 @@ function setLS(task) {
       title,
       body,
       priority,
-      isFinished: false
+      isFinished: false,
+      dateTime: Date.now()
     };
 
     return { ...newTask };
@@ -172,7 +173,6 @@ function setLS(task) {
       completeTask.forEach(element => {
         setLS(element);
       });
-      // debugger;
 
       renderAllTasks(getLS());
       target.checked = !target.checked;
@@ -182,8 +182,10 @@ function setLS(task) {
   function sortBy(sortParams) {
     const getTasks = getLS();
     let arr = [];
-    if (sortParams !== "priority") arr = getTasks.sort().reverse();
-    else arr = getTasks.sort((a, b) => a[sortParams] - b[sortParams]);
+    if (sortParams !== "priority") {
+      arr = getTasks.sort((a, b) => a[sortParams] - b[sortParams]);
+      arr.reverse();
+    } else arr = getTasks.sort((a, b) => a[sortParams] - b[sortParams]);
     renderAllTasks(arr);
   }
 })(getLS());
