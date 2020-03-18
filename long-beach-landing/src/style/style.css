@@ -977,24 +977,25 @@ main.main section.section-blog .container.container-blog .blog article .article-
   }
 }
 
-main.main section.section-blog .container.container-blog .blog article .article-content button.read-more {
+main.main section.section-blog .container.container-blog .blog article .article-content a.read-more {
   padding: 20px 20px;
   background-color: white;
   border: 1px solid #e5e5e5;
   color: #000000;
   font-size: 20px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 1440px) {
-  main.main section.section-blog .container.container-blog .blog article .article-content button.read-more {
+  main.main section.section-blog .container.container-blog .blog article .article-content a.read-more {
     padding: 10px 10px;
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 1199px) {
-  main.main section.section-blog .container.container-blog .blog article .article-content button.read-more {
+  main.main section.section-blog .container.container-blog .blog article .article-content a.read-more {
     padding: 10px 10px;
     font-size: 16px;
   }
@@ -1144,7 +1145,7 @@ main.main section.section-cta .container.cta-container .cta .block-title {
   }
 }
 
-main.main section.section-cta .container.cta-container .cta .button-enrol {
+main.main section.section-cta .container.cta-container .cta a.button-enrol {
   padding: 20px 45px;
   border: 1px solid #41475b;
   background-color: white;
@@ -1152,6 +1153,7 @@ main.main section.section-cta .container.cta-container .cta .button-enrol {
   font-family: Avenir;
   font-size: 18px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 main.main-scroll {

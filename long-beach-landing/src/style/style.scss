@@ -76,22 +76,6 @@ header.header {
       padding: 30px 0;
       margin-left: auto;
       margin-right: auto;
-      // height: 90px;
-
-      // padding-top: 90px;
-
-      // @include for-xl() {
-      //   // padding-top: 70px;
-      // }
-
-      // @include for-lg() {
-      //   padding-top: 50px;
-      // }
-
-      // @include for-md() {
-
-      // }
-      // top: 0;
 
       .logo {
         line-height: 0;
@@ -775,13 +759,14 @@ main.main {
               }
             }
 
-            button.read-more {
+            a.read-more {
               padding: 20px 20px;
               background-color: white;
               border: 1px solid #e5e5e5;
               color: #000000;
               font-size: 20px;
               font-weight: bold;
+              text-decoration: none;
 
               @include for-xl() {
                 padding: 10px 10px;
@@ -906,7 +891,7 @@ main.main {
           }
         }
 
-        .button-enrol {
+        a.button-enrol {
           padding: 20px 45px;
           border: 1px solid #41475b;
           background-color: white;
@@ -914,6 +899,7 @@ main.main {
           font-family: Avenir;
           font-size: 18px;
           font-weight: 500;
+          text-decoration: none;
         }
       }
     }
