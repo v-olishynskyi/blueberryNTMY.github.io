@@ -77,26 +77,42 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "./";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _style_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_style_css__WEBPACK_IMPORTED_MODULE_0__);
+
+// EXTERNAL MODULE: ./src/style/style.css
+var style = __webpack_require__(0);
+
+// CONCATENATED MODULE: ./src/js/modules/getLS.js
+function getLS() {
+  var ls = JSON.parse(localStorage.getItem("tasks"));
+  return ls ? ls : [];
+}
+// CONCATENATED MODULE: ./src/js/main.js
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var unfinishedList = document.querySelector(".list.unfinished");
@@ -106,11 +122,6 @@ var inputBody = document.querySelector(".input__field-body");
 var inputPriority = document.querySelector(".input__field-priority");
 var btnAdd = document.querySelector(".input__btn-add");
 var sortButton = document.querySelectorAll("button.sorted-button");
-
-function getLS() {
-  var ls = JSON.parse(localStorage.getItem("tasks"));
-  return ls ? ls : [];
-}
 
 function setLS(task) {
   if (localStorage.getItem("tasks") == null) {
@@ -149,8 +160,7 @@ function setLS(task) {
     if (tasks.length > 0) {
       tasks.reverse().forEach(function (task) {
         if (task.isFinished) {
-          debugger;
-          var li = createDOMListItem(task, check = true);
+          var li = createDOMListItem(task);
           finishedFragment.appendChild(li);
           li.classList.add("complete");
         } else {
@@ -174,14 +184,14 @@ function setLS(task) {
     var _id = _ref2._id,
         priority = _ref2.priority,
         title = _ref2.title,
-        body = _ref2.body;
-    var check = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        body = _ref2.body,
+        isFinished = _ref2.isFinished;
     var li = document.createElement("li");
     li.classList.add("list__item");
     li.setAttribute("data-task-id", _id);
     var input = document.createElement("input");
     input.type = "checkbox";
-    input.checked = check;
+    input.checked = isFinished;
     input.classList.add("list__checkbox");
     var span = document.createElement("span");
     span.classList.add("list__title");
@@ -292,12 +302,6 @@ function setLS(task) {
     renderAllTasks(arr);
   }
 })(getLS());
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ })
 /******/ ]);

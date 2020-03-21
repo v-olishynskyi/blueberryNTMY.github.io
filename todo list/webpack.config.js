@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: __dirname + `/dist`,
     filename: `bundle.js`,
-    publicPath: `/`
+    publicPath: `./`
   },
   module: {
     rules: [
@@ -29,7 +29,10 @@ module.exports = {
       template: __dirname + `/src/public/index.html`,
       inject: "body"
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin({
+      filename: "style.css",
+      chunkFilename: "[id].css"
+    })
   ],
   optimization: {
     minimizer: [new OptimizeCSSAssetsPlugin({})]
