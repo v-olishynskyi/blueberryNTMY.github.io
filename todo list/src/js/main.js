@@ -1,3 +1,6 @@
+import "../style/style.css";
+import getLS from "./modules/getLS";
+
 const unfinishedList = document.querySelector(".list.unfinished");
 const finishedList = document.querySelector(".list.finished");
 const inputTitle = document.querySelector(".input__field-title");
@@ -6,12 +9,6 @@ const inputPriority = document.querySelector(".input__field-priority");
 const btnAdd = document.querySelector(".input__btn-add");
 
 const sortButton = document.querySelectorAll("button.sorted-button");
-
-function getLS() {
-  const ls = JSON.parse(localStorage.getItem("tasks"));
-
-  return ls ? ls : [];
-}
 
 function setLS(task) {
   if (localStorage.getItem("tasks") == null) {
@@ -35,7 +32,6 @@ function setLS(task) {
   sortButton.forEach(elem => {
     elem.addEventListener("click", ({ target }) => {
       const params = target.dataset.sort;
-      console.log(typeof params);
       sortBy(params);
     });
   });
@@ -51,7 +47,7 @@ function setLS(task) {
     if (tasks.length > 0) {
       tasks.reverse().forEach(task => {
         if (task.isFinished) {
-          const li = createDOMListItem(task, (check = true));
+          const li = createDOMListItem(task);
           finishedFragment.appendChild(li);
           li.classList.add("complete");
         } else {
@@ -70,14 +66,14 @@ function setLS(task) {
     finishedList.appendChild(finishedFragment);
   }
 
-  function createDOMListItem({ _id, priority, title, body }, check = false) {
+  function createDOMListItem({ _id, priority, title, body, isFinished }) {
     const li = document.createElement("li");
     li.classList.add("list__item");
     li.setAttribute("data-task-id", _id);
 
     const input = document.createElement("input");
     input.type = "checkbox";
-    input.checked = check;
+    input.checked = isFinished;
     input.classList.add("list__checkbox");
 
     const span = document.createElement("span");
